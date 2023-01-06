@@ -58,7 +58,8 @@
 				fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos.xyz);
 				// Get the half direction in world space
 				fixed3 halfDir = normalize(worldLightDir + viewDir);
-				// Compute specular term
+				// Compute specular term with blinnphong model
+
 				fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(0, dot(worldNormal, halfDir)), _Gloss);
 				
 				return fixed4(ambient + diffuse + specular, 1.0);

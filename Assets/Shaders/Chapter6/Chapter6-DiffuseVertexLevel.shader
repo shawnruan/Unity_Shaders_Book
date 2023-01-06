@@ -3,7 +3,8 @@
 		_Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
 	}
 	SubShader {
-		Pass { 
+		Pass {
+			//定义该 pass 下的 lightmode
 			Tags { "LightMode"="ForwardBase" }
 		
 			CGPROGRAM
@@ -17,14 +18,15 @@
 			
 			struct a2v {
 				float4 vertex : POSITION;
-				float3 normal : NORMAL;
+				float3 normal : NORMAL; //定义顶点法线信息
 			};
 			
 			struct v2f {
 				float4 pos : SV_POSITION;
 				fixed3 color : COLOR;
 			};
-			
+
+			// 实现一个逐顶点的漫反射光照
 			v2f vert(a2v v) {
 				v2f o;
 				// Transform the vertex from object space to projection space
@@ -35,6 +37,7 @@
 				
 				// Transform the normal from object space to world space
 				fixed3 worldNormal = normalize(mul(v.normal, (float3x3)unity_WorldToObject));
+
 				// Get the light direction in world space
 				fixed3 worldLight = normalize(_WorldSpaceLightPos0.xyz);
 				// Compute diffuse term
@@ -44,7 +47,9 @@
 				
 				return o;
 			}
-			
+
+			// 输出顶点颜色至片元着色器
+
 			fixed4 frag(v2f i) : SV_Target {
 				return fixed4(i.color, 1.0);
 			}
@@ -52,5 +57,7 @@
 			ENDCG
 		}
 	}
+
+	// 设置回调
 	FallBack "Diffuse"
 }

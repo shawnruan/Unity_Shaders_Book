@@ -20,7 +20,8 @@
 
                 float4 texcoord : TEXCOORD0; //纹理坐标
             };
-            
+
+            //a2v means  vertex shader to fragement shader
             struct v2f {
                 float4 pos : SV_POSITION;
                 fixed3 color : COLOR0;

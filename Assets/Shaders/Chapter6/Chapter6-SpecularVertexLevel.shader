@@ -1,13 +1,14 @@
 ﻿Shader "Unity Shaders Book/Chapter 6/Specular Vertex-Level" {
 	Properties {
 		_Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
-		_Specular ("Specular", Color) = (1, 1, 1, 1)
-		_Gloss ("Gloss", Range(8.0, 256)) = 20
+		_Specular ("Specular", Color) = (1, 1, 1, 1) //控制高光颜色
+		_Gloss ("Gloss", Range(8.0, 256)) = 20 //定义高光区域大小
 	}
 	SubShader {
 		Pass { 
-			Tags { "LightMode"="ForwardBase" }
+			Tags { "LightMode"="ForwardBase" } //定义光照标签用于获取unity的内置光照变量
 			
+
 			CGPROGRAM
 			
 			#pragma vertex vert

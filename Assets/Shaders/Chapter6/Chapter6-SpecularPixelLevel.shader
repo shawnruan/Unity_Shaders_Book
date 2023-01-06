@@ -42,7 +42,9 @@
 				
 				return o;
 			}
-			
+
+			//在片元着色器中计算高光反射
+
 			fixed4 frag(v2f i) : SV_Target {
 				// Get ambient term
 				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
