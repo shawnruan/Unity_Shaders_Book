@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[ExecuteInEditMode]
+[ExecuteInEditMode] //编辑器模式下可运行
 public class ProceduralTextureGeneration : MonoBehaviour {
 
 	public Material material = null;
 
+	//声明纹理属性，大小，背景颜色，原点颜色，模糊因子
 	#region Material properties
 	[SerializeField, SetProperty("textureWidth")]
 	private int m_textureWidth = 512;

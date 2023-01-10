@@ -1,9 +1,9 @@
 ﻿Shader "Unity Shaders Book/Chapter 10/Reflection" {
 	Properties {
 		_Color ("Color Tint", Color) = (1, 1, 1, 1)
-		_ReflectColor ("Reflection Color", Color) = (1, 1, 1, 1)
-		_ReflectAmount ("Reflect Amount", Range(0, 1)) = 1
-		_Cubemap ("Reflection Cubemap", Cube) = "_Skybox" {}
+		_ReflectColor ("Reflection Color", Color) = (1, 1, 1, 1) //用于控制反射颜色
+		_ReflectAmount ("Reflect Amount", Range(0, 1)) = 1 //材质反射度
+		_Cubemap ("Reflection Cubemap", Cube) = "_Skybox" {} //模拟反射的环境映射纹理
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" "Queue"="Geometry"}

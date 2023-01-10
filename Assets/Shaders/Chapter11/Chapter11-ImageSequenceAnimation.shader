@@ -3,8 +3,8 @@
 		_Color ("Color Tint", Color) = (1, 1, 1, 1)
 		_MainTex ("Image Sequence", 2D) = "white" {}
     	_HorizontalAmount ("Horizontal Amount", Float) = 4
-    	_VerticalAmount ("Vertical Amount", Float) = 4
-    	_Speed ("Speed", Range(1, 100)) = 30
+    	_VerticalAmount ("Vertical Amount", Float) =  //定义关键帧数量
+    	_Speed ("Speed", Range(1, 100)) = 30 //定义播放速度
 	}
 	SubShader {
 		Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
@@ -54,7 +54,7 @@
 //				half2 uv = float2(i.uv.x /_HorizontalAmount, i.uv.y / _VerticalAmount);
 //				uv.x += column / _HorizontalAmount;
 //				uv.y -= row / _VerticalAmount;
-				half2 uv = i.uv + half2(column, -row);
+				half2 uv = i.uv + half2(column, -row); //获取当前图像的纹理坐标
 				uv.x /=  _HorizontalAmount;
 				uv.y /= _VerticalAmount;
 				

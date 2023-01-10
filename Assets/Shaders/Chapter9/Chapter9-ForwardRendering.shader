@@ -51,7 +51,7 @@
 				fixed3 worldNormal = normalize(i.worldNormal);
 				fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
 				
-				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
+				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;//计算场景中的环境光
 				
 			 	fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * max(0, dot(worldNormal, worldLightDir));
 
@@ -59,7 +59,7 @@
 			 	fixed3 halfDir = normalize(worldLightDir + viewDir);
 			 	fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(0, dot(worldNormal, halfDir)), _Gloss);
 
-				fixed atten = 1.0;
+				fixed atten = 1.0;//衰减值，在平行光的情况下可以理解为没有衰减，所以这个值为1.0
 				
 				return fixed4(ambient + (diffuse + specular) * atten, 1.0);
 			}
@@ -71,7 +71,7 @@
 			// Pass for other pixel lights
 			Tags { "LightMode"="ForwardAdd" }
 			
-			Blend One One
+			Blend One One //开启混合模式
 		
 			CGPROGRAM
 			
@@ -112,7 +112,8 @@
 			
 			fixed4 frag(v2f i) : SV_Target {
 				fixed3 worldNormal = normalize(i.worldNormal);
-				#ifdef USING_DIRECTIONAL_LIGHT
+				//判断当前处理的逐像素光源类型
+				#ifdef USING_DIRECTIONAL_LIGHT 
 					fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
 				#else
 					fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz - i.worldPos.xyz);
@@ -123,7 +124,8 @@
 				fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos.xyz);
 				fixed3 halfDir = normalize(worldLightDir + viewDir);
 				fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(0, dot(worldNormal, halfDir)), _Gloss);
-				
+
+				//处理不同光源的衰减
 				#ifdef USING_DIRECTIONAL_LIGHT
 					fixed atten = 1.0;
 				#else

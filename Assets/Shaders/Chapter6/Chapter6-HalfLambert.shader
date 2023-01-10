@@ -47,6 +47,8 @@
 				
 				// Compute diffuse term
 				fixed halfLambert = dot(worldNormal, worldLightDir) * 0.5 + 0.5;
+
+				//在计算漫反射光照的时候使用半兰伯特模型
 				fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * halfLambert;
 				
 				fixed3 color = ambient + diffuse;

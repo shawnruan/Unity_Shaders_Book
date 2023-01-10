@@ -36,7 +36,7 @@
 				float4 pos : SV_POSITION;
 				float3 worldNormal : TEXCOORD0;
 				float3 worldPos : TEXCOORD1;
-				SHADOW_COORDS(2)
+				SHADOW_COORDS(2) //内置宏，声明用于对阴影纹理采样的坐标
 			};
 			
 			v2f vert(a2v v) {
@@ -67,7 +67,7 @@
 
 				fixed atten = 1.0;
 				
-				fixed shadow = SHADOW_ATTENUATION(i);
+				fixed shadow = SHADOW_ATTENUATION(i); //计算阴影值
 				
 				return fixed4(ambient + (diffuse + specular) * atten * shadow, 1.0);
 			}
@@ -147,5 +147,5 @@
 			ENDCG
 		}
 	}
-	FallBack "Specular"
+	FallBack "Specular" //shadow的投射在 fallback 中产生
 }

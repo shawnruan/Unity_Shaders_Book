@@ -65,6 +65,8 @@
 				UNITY_LIGHT_ATTENUATION(atten, i, i.worldPos);
 				
 				fixed3 reflection = texCUBE(_Cubemap, i.worldRefl).rgb;
+
+				// compute fresnel reflection 
 				
 				fixed fresnel = _FresnelScale + (1 - _FresnelScale) * pow(1 - dot(worldViewDir, worldNormal), 5);
 				

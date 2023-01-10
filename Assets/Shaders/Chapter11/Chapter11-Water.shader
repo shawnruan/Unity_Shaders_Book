@@ -2,7 +2,7 @@ Shader "Unity Shaders Book/Chapter 11/Water" {
 	Properties {
 		_MainTex ("Main Tex", 2D) = "white" {}
 		_Color ("Color Tint", Color) = (1, 1, 1, 1)
-		_Magnitude ("Distortion Magnitude", Float) = 1
+		_Magnitude ("Distortion Magnitude", Float) = 1 //controll water wave magnitude
  		_Frequency ("Distortion Frequency", Float) = 1
  		_InvWaveLength ("Distortion Inverse Wave Length", Float) = 10
  		_Speed ("Speed", Float) = 0.5
@@ -47,7 +47,7 @@ Shader "Unity Shaders Book/Chapter 11/Water" {
 				
 				float4 offset;
 				offset.yzw = float3(0.0, 0.0, 0.0);
-				offset.x = sin(_Frequency * _Time.y + v.vertex.x * _InvWaveLength + v.vertex.y * _InvWaveLength + v.vertex.z * _InvWaveLength) * _Magnitude;
+				offset.x = sin(_Frequency * _Time.y + v.vertex.x * _InvWaveLength + v.vertex.y * _InvWaveLength + v.vertex.z * _InvWaveLength) * _Magnitude; //draw water flow
 				o.pos = UnityObjectToClipPos(v.vertex + offset);
 				
 				o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);

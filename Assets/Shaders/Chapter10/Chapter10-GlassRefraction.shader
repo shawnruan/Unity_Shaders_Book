@@ -1,10 +1,10 @@
 ﻿Shader "Unity Shaders Book/Chapter 10/Glass Refraction" {
 	Properties {
 		_MainTex ("Main Tex", 2D) = "white" {}
-		_BumpMap ("Normal Map", 2D) = "bump" {}
-		_Cubemap ("Environment Cubemap", Cube) = "_Skybox" {}
-		_Distortion ("Distortion", Range(0, 100)) = 10
-		_RefractAmount ("Refract Amount", Range(0.0, 1.0)) = 1.0
+		_BumpMap ("Normal Map", 2D) = "bump" {} //玻璃法线纹理
+		_Cubemap ("Environment Cubemap", Cube) = "_Skybox" {} //环境纹理
+		_Distortion ("Distortion", Range(0, 100)) = 10 //图像扭曲度
+		_RefractAmount ("Refract Amount", Range(0.0, 1.0)) = 1.0 //控制折射程度
 	}
 	SubShader {
 		// We must be transparent, so other objects are drawn before this one.

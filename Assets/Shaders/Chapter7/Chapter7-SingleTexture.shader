@@ -18,7 +18,7 @@
 			
 			fixed4 _Color;
 			sampler2D _MainTex;
-			float4 _MainTex_ST;
+			float4 _MainTex_ST;//定义纹理属性
 			fixed4 _Specular;
 			float _Gloss;
 			

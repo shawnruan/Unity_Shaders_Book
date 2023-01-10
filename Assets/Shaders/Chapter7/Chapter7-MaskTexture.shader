@@ -19,7 +19,8 @@
 			#pragma fragment frag
 			
 			#include "Lighting.cginc"
-			
+		
+			// 定义和 property 中各个属性类型相匹配的变量	
 			fixed4 _Color;
 			sampler2D _MainTex;
 			float4 _MainTex_ST;

@@ -1,10 +1,10 @@
 ﻿Shader "Unity Shaders Book/Chapter 11/Scrolling Background" {
 	Properties {
-		_MainTex ("Base Layer (RGB)", 2D) = "white" {}
+		_MainTex ("Base Layer (RGB)", 2D) = "white" {} 
 		_DetailTex ("2nd Layer (RGB)", 2D) = "white" {}
-		_ScrollX ("Base layer Scroll Speed", Float) = 1.0
+		_ScrollX ("Base layer Scroll Speed", Float) = 1.0 //滚动速度
 		_Scroll2X ("2nd layer Scroll Speed", Float) = 1.0
-		_Multiplier ("Layer Multiplier", Float) = 1
+		_Multiplier ("Layer Multiplier", Float) = 1 //控制纹理整体亮度
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" "Queue"="Geometry"}
@@ -41,7 +41,7 @@
 				v2f o;
 				o.pos = UnityObjectToClipPos(v.vertex);
 				
-				o.uv.xy = TRANSFORM_TEX(v.texcoord, _MainTex) + frac(float2(_ScrollX, 0.0) * _Time.y);
+				o.uv.xy = TRANSFORM_TEX(v.texcoord, _MainTex) + frac(float2(_ScrollX, 0.0) * _Time.y); //在水平方向上对纹理坐标进行偏移
 				o.uv.zw = TRANSFORM_TEX(v.texcoord, _DetailTex) + frac(float2(_Scroll2X, 0.0) * _Time.y);
 				
 				return o;
@@ -51,8 +51,8 @@
 				fixed4 firstLayer = tex2D(_MainTex, i.uv.xy);
 				fixed4 secondLayer = tex2D(_DetailTex, i.uv.zw);
 				
-				fixed4 c = lerp(firstLayer, secondLayer, secondLayer.a);
-				c.rgb *= _Multiplier;
+				fixed4 c = lerp(firstLayer, secondLayer, secondLayer.a); //使用透明通道来混合两张纹理
+				c.rgb *= _Multiplier; //调整背景亮度
 				
 				return c;
 			}

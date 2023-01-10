@@ -11,7 +11,7 @@
 			Tags { "LightMode"="ForwardBase" }
 			
 			// Turn off culling
-			Cull Off
+			Cull Off //实现双面渲染效果
 			
 			CGPROGRAM
 			

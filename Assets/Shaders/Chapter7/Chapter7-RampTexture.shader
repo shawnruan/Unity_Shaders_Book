@@ -43,7 +43,7 @@
 				
 				o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
 				
-				o.uv = TRANSFORM_TEX(v.texcoord, _RampTex);
+				o.uv = TRANSFORM_TEX(v.texcoord, _RampTex);//计算经过平铺和偏移后的纹理坐标
 				
 				return o;
 			}

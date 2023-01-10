@@ -10,8 +10,8 @@
 		Pass {
 			Tags { "LightMode"="ForwardBase" }
 
-			ZWrite Off
-			Blend SrcAlpha OneMinusSrcAlpha
+			ZWrite Off //关闭深度写入
+			Blend SrcAlpha OneMinusSrcAlpha //开启混合模式
 			
 			CGPROGRAM
 			
@@ -63,7 +63,7 @@
 				
 				fixed3 diffuse = _LightColor0.rgb * albedo * max(0, dot(worldNormal, worldLightDir));
 				
-				return fixed4(ambient + diffuse, texColor.a * _AlphaScale);
+				return fixed4(ambient + diffuse, texColor.a * _AlphaScale); //在返回值中设置透明通道
 			}
 			
 			ENDCG

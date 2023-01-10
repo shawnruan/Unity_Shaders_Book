@@ -10,7 +10,7 @@
 		// Extra pass that renders to depth buffer only
 		Pass {
 			ZWrite On
-			ColorMask 0
+			ColorMask 0 //用于设置颜色通道的写掩码
 		}
 		
 		Pass {

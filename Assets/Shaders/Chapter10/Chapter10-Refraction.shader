@@ -3,7 +3,7 @@
 		_Color ("Color Tint", Color) = (1, 1, 1, 1)
 		_RefractColor ("Refraction Color", Color) = (1, 1, 1, 1)
 		_RefractAmount ("Refraction Amount", Range(0, 1)) = 1
-		_RefractRatio ("Refraction Ratio", Range(0.1, 1)) = 0.5
+		_RefractRatio ("Refraction Ratio", Range(0.1, 1)) = 0.5 //计算不同介质的透射比
 		_Cubemap ("Refraction Cubemap", Cube) = "_Skybox" {}
 	}
 	SubShader {

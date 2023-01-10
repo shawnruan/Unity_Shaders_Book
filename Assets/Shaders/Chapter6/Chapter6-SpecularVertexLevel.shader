@@ -15,7 +15,8 @@
 			#pragma fragment frag
 			
 			#include "Lighting.cginc"
-			
+
+			// 实现一个逐顶点的漫反射光照
 			fixed4 _Diffuse;
 			fixed4 _Specular;
 			float _Gloss;
@@ -45,7 +46,8 @@
 				
 				// Compute diffuse term
 				fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * saturate(dot(worldNormal, worldLightDir));
-				
+
+				// 以下部分计算高光反射
 				// Get the reflect direction in world space
 				fixed3 reflectDir = normalize(reflect(-worldLightDir, worldNormal));
 				// Get the view direction in world space

@@ -20,7 +20,7 @@
 			fixed4 _Color;
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
-			fixed _Cutoff;
+			fixed _Cutoff; //透明度测试阈值
 			
 			struct a2v {
 				float4 vertex : POSITION;
@@ -54,7 +54,7 @@
 				
 				fixed4 texColor = tex2D(_MainTex, i.uv);
 				
-				// Alpha test
+				// Alpha test 当输出为负，舍弃片元输出
 				clip (texColor.a - _Cutoff);
 				// Equal to 
 //				if ((texColor.a - _Cutoff) < 0.0) {
